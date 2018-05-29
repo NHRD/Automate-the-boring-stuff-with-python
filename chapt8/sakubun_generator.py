@@ -23,6 +23,7 @@ def sakubun_gen(adj, noun, verb, adv):
     result = " ".join(sakubun_out)
     sakubun_file = open(".\\Automate-the-boring-stuff-with-python\\chapt8\\sakubun_new.txt", "w")
     sakubun_file.write("{}".format(result))
+    sakubun_file.close()
     return result
 
 adj = str(input("Enter an adjective:\n"))
