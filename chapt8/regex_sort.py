@@ -1,6 +1,6 @@
 import re, os
 
-def regex_sercher(regex):
+def regex_sercher(rege):
     result_list = []
     file_list = os.listdir(".\\Automate-the-boring-stuff-with-python\\chapt8\\regex_sort_files")
     #print(file_list)
@@ -10,6 +10,7 @@ def regex_sercher(regex):
         text_file = open(path, "r")
         text = text_file.read()
         text_list = text.split("\n")
+        regex = "^.*" + rege + ".*$"
         for j in text_list:
             if re.compile((regex)).search(j) != None:
                 result_list.append(re.compile((regex)).search(j).group())
@@ -18,5 +19,5 @@ def regex_sercher(regex):
     result = "\n".join(result_list)
     return result
 
-test = regex_sercher(r"Charlie")
+test = regex_sercher(r"Bravo alpha bra")
 print(test)
