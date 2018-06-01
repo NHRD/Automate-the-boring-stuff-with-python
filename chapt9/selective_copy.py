@@ -3,7 +3,7 @@ import os, shutil, re
 def file_searcher(path_r, path_c):
     target = re.compile(r"\.(pdf|txt)")
     root_path = os.path.join(path_r)
-    target_path = os.path.join(path_r)
+    target_path = os.path.join(path_c)
     print("Copied files are:")
     for root, dir, files in os.walk(root_path):
         for f in files:
