@@ -5,4 +5,5 @@ for i in range(5):
     rnm = random.randint(1, 100)
     print(rnm)
 
-print(test)
+print("test")
+print("test ubuntu")
