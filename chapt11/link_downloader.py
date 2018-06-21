@@ -1,6 +1,12 @@
 import urllib.request
 from bs4 import BeautifulSoup
 from selenium import webdriver
+import random, logging
+
+logging.basicConfig(level = logging.DEBUG, format = "%(asctime)s - %(levelname)s - %(message)s")
+logging.debug("program start.")
+
+#logging.disable(logging.DEBUG)
 
 class Link_downloader:
 
