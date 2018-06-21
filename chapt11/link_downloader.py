@@ -1,21 +1,30 @@
-import requests, bs4
+import urllib.request
+from bs4 import BeautifulSoup
 from selenium import webdriver
 
-def link_checker(hp_url):
-    links = []
-    res = requests.get(hp_url)
-    res.raise_for_status()
-    res_bs = bs4.BeautifulSoup(res.text)
-    hp_list = res_bs.select("#list h2 a")
-    for i in range(len(hp_list)):
-        links.append(hp_list[i].get("href"))
-    return links
+class Link_downloader:
 
-def hp_opener(links):
-    browser = webdriver.Firefox()
-    for link in links:
-        browser.open(link)
+    def __init__(self, hp_url):
+        self.hp_url = hp_url
+    
+    def link_checker(self):
+        self.links = []
+        r = urllib.request.urlopen(self.hp_url)
+        html = r.read()
+        parser = "html.parser"
+        sp = BeautifulSoup(html, parser).find_all("a")
+        for link in sp:
+            self.links.append(link)
+        return self.links
+    
+class Browser_control:
 
-def main():
-    hp_url = input("Input target URL:")
-    hp_opener(link_checker(hp_url))
+    def __init__(self):
+        hp_url = input("Input target URL:")
+        browser = webdriver.Firefox
+        self.link_source = Link_downloader(hp_url)
+        self.links = self.link_source.link_checker()
+        for link in self.links:
+            browser.get(link)
+ 
+result = Browser_control()
