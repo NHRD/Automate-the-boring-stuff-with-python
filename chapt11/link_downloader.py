@@ -21,7 +21,7 @@ class Browser_control:
 
     def __init__(self):
         hp_url = input("Input target URL:")
-        browser = webdriver.Firefox
+        browser = webdriver.Firefox()
         self.link_source = Link_downloader(hp_url)
         self.links = self.link_source.link_checker()
         for link in self.links:
